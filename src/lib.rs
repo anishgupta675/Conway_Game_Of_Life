@@ -118,9 +118,12 @@ impl Universe {
         self.height = height;
         self.cells = (0..self.width * height).map(|_i| Cell::Dead).collect();
     }
+}
 
-    pub fn get_cells(&self) -> *const Cell {
-        &self.cells.as_ptr()
+impl Universe {
+
+    pub fn get_cells(&self) -> &[Cell] {
+        &self.cells
     }
 
     pub fn set_cells(&mut self, cells: &[(u32, u32)]) {
